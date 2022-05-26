@@ -18,7 +18,6 @@ const slideObserver = new IntersectionObserver(
       if (entry.isIntersecting) {
         animations.forEach((animation) => {
           selectElements(entry.target, animation).forEach((element) => {
-            console.log(element);
             addAnimationClass(element, animation);
           });
         });
@@ -32,4 +31,11 @@ const slideObserver = new IntersectionObserver(
 
 sections.forEach((section) => {
   slideObserver.observe(section);
+});
+
+const hamburger = document.querySelector(".hamburger");
+const mobileNavigation = document.querySelector(".mobile-navigation");
+hamburger.addEventListener("click", function () {
+  this.classList.toggle("hamburger--active");
+  mobileNavigation.classList.toggle("mobile-navigation--active");
 });

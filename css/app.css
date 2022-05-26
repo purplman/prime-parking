@@ -37,6 +37,7 @@ header {
   background: var(--p-color);
   height: 110px;
   z-index: 2;
+  display: none;
 }
 nav {
   display: flex;
@@ -50,6 +51,7 @@ nav ul {
   display: flex;
   gap: 30px;
 }
+.mobile-menu-link,
 .menu-link {
   text-transform: uppercase;
   display: flex;
@@ -70,20 +72,102 @@ nav ul {
 .menu-link--active:after {
   width: 100%;
 }
+
+/* Mobile menu */
+.mobile-menu {
+  background-color: var(--p-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+.mobile-menu-logo {
+  width: 30px;
+  position: relative;
+  z-index: 3;
+}
+.hamburger {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  background: transparent;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+  z-index: 3;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  transform-origin: center;
+}
+
+.hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hamburger--active span:first-child {
+  transform: rotate(45deg) translateY(7px);
+}
+.hamburger--active span:last-child {
+  transform: rotate(-45deg) translateY(-7px);
+}
+
+.mobile-navigation {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100vh;
+  width: 100%;
+  transition: 0.3s ease-in-out;
+  background: var(--p-color);
+  z-index: 2;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+}
+.mobile-navigation--active {
+  left: 0;
+}
+
+.mobile-menu-link {
+  font-size: 30px;
+  font-weight: 500;
+  text-transform: none;
+}
 .hero {
   background: var(--p-color);
   position: relative;
 }
 .hero-container {
-  height: calc(100vh - 110px);
-  display: flex;
-  align-items: center;
+  margin-top: 77px;
+  padding-bottom: 60px;
 }
-
 .cta-buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  align-items: center;
+}
+.footer-cta-buttons {
+  align-items: flex-start;
 }
 .btn {
   max-width: -webkit-fit-content;
@@ -123,31 +207,24 @@ nav ul {
 }
 
 .h-screen {
-  height: 100vh;
   position: relative;
-  display: flex;
-  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  height: auto;
 }
 .section-content {
   width: 100%;
+  margin-bottom: 60px;
 }
 .section-content > div {
   width: 100%;
   position: relative;
 }
+.section-content--divided {
+  display: flex;
+  flex-direction: column;
+}
 
-.section-content > div:first-child:not(.cta-buttons) {
-  transform: translateY(-100px);
-}
-.section-content > div:last-child:not(.cta-buttons) {
-  transform: translateY(100px);
-}
-.section-content--reverse > div:first-child:not(.cta-buttons) {
-  transform: translateY(100px);
-}
-.section-content--reverse > div:last-child:not(.cta-buttons) {
-  transform: translateY(-100px);
-}
 .section-content h1 {
   margin-bottom: 30px;
   font-size: 30px;
@@ -155,6 +232,7 @@ nav ul {
   transform: translateX(-100px);
   opacity: 0;
   transition: transform 0.3s ease-in-out;
+  text-align: center;
 }
 .section-content p {
   font-size: 18px;
@@ -164,22 +242,15 @@ nav ul {
   transform: translateX(-100px);
   opacity: 0;
   transition: all 0.3s 0.1s ease-in-out;
+  text-align: center;
 }
 .mockup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 420px;
+  width: 100%;
   opacity: 0;
   margin-top: 100px;
   transition: 0.3s ease-in-out;
 }
 
-.section-content--divided {
-  display: flex;
-  justify-content: space-between;
-}
 .text-right {
   text-align: right;
 }
@@ -203,6 +274,9 @@ footer {
 }
 .footer-row {
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
 }
 .footer-icon {
   width: 30px;
@@ -215,10 +289,6 @@ footer {
   margin-bottom: 8px;
 }
 
-.footer-row {
-  display: flex;
-  gap: 120px;
-}
 .footer-col {
   width: 100%;
 }
@@ -236,7 +306,71 @@ footer {
   color: #fff;
 }
 
-@media (min-width: 1500px) {
+@media screen and (min-width: 768px) {
+  header {
+    display: block;
+  }
+  .mobile-menu {
+    display: none;
+  }
+  .h-screen {
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 100vh;
+  }
+  .section-content--divided {
+    justify-content: space-between;
+  }
+  .hero-container {
+    min-height: calc(100vh - 110px);
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+  }
+  .mockup {
+    width: 420px;
+  }
+  .section-content {
+    margin-bottom: 0;
+  }
+  .cta-buttons {
+    align-items: flex-start;
+  }
+  .footer-row {
+    flex-direction: row;
+  }
+  .mockup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .section-content--divided {
+    flex-direction: row;
+  }
+  .section-content > div:first-child:not(.cta-buttons) {
+    transform: translateY(-100px);
+  }
+  .section-content > div:last-child:not(.cta-buttons) {
+    transform: translateY(100px);
+  }
+  .section-content--reverse > div:first-child:not(.cta-buttons) {
+    transform: translateY(100px);
+  }
+  .section-content--reverse > div:last-child:not(.cta-buttons) {
+    transform: translateY(-100px);
+  }
+  .h-screen {
+    display: flex;
+    align-items: center;
+  }
+  .section-content h1,
+  .section-content p {
+    text-align: unset;
+  }
+}
+
+@media screen and (min-width: 1500px) {
   .container {
     width: calc(100% - 240px);
   }
