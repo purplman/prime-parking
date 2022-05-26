@@ -266,9 +266,15 @@ nav a {
   margin-bottom: 30px;
   font-size: 30px;
   position: relative;
-  transform: translateX(-100px);
+
   opacity: 0;
   transition: transform 0.3s ease-in-out;
+}
+.section-content div:first-child h1 {
+  transform: translateX(-100px);
+}
+.section-content div:last-child h1 {
+  transform: translateX(100px);
 }
 .section-content p {
   font-size: 18px;
