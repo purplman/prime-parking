@@ -203,7 +203,6 @@ nav a {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  align-items: center;
 }
 .footer-cta-buttons {
   align-items: flex-start;
@@ -250,6 +249,7 @@ nav a {
   padding-top: 60px;
   padding-bottom: 60px;
   height: auto;
+  width: 100%;
 }
 .section-content {
   width: 100%;
@@ -286,7 +286,6 @@ nav a {
   transform: translateX(-100px);
   opacity: 0;
   transition: all 0.3s 0.1s ease-in-out;
-  text-align: center;
 }
 .mockup {
   width: 100%;
@@ -353,12 +352,73 @@ footer {
 .footer .social-links a {
   color: #fff;
 }
+#services-section {
+  background: #f4f4f4;
+  padding-top: 60px;
+}
+#services-section h1 {
+  text-align: center;
+}
+.services {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  display: grid;
+  width: 100%;
+  gap: 60px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+.service {
+  padding: 30px;
+  border-radius: 10px;
+  transition: 0.2s ease-in-out;
+  position: relative;
+}
+
+.service::before {
+  top: 0;
+  position: absolute;
+  content: "";
+  width: 60px;
+  height: 3px;
+  background-color: var(--p-color);
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: 0.2s ease-in-out;
+}
+.service:hover {
+  background: #fff;
+}
+.service:hover:before {
+  opacity: 1;
+}
+.service-icon {
+  width: 30px;
+}
+.service-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+.service-icon,
+.service-title {
+  margin-bottom: 15px;
+}
 @media screen and (min-width: 768px) {
   header {
     display: block;
   }
+  #services-section h1 {
+    transform: translate(0) !important;
+  }
+  .services {
+    margin-top: 160px;
+    margin-bottom: 160px;
+  }
   .mobile-menu {
     display: none;
+  }
+  .services {
+    grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   }
   .h-screen {
     padding-top: 0;
