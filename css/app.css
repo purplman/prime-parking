@@ -37,7 +37,9 @@ img {
 .bg-yellow {
   background: var(--p-color);
 }
-
+section {
+  overflow: hidden;
+}
 header {
   background: var(--p-color);
   height: 110px;
@@ -321,7 +323,7 @@ footer {
   gap: 60px;
 }
 .footer-icon {
-  width: 30px;
+  width: 16px;
   margin-right: 16px;
 }
 .footer-el ul {
@@ -338,6 +340,10 @@ footer {
   color: #888;
   display: flex;
   margin-bottom: 8px;
+  transition: 0.2s ease-in-out;
+}
+.footer-menu a:hover {
+  color: #fff;
 }
 .footer .social-links {
   display: flex;
@@ -347,7 +353,6 @@ footer {
 .footer .social-links a {
   color: #fff;
 }
-
 @media screen and (min-width: 768px) {
   header {
     display: block;
