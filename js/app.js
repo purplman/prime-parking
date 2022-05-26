@@ -1,22 +1,35 @@
 sections = document.querySelectorAll("section");
+const animations = ["slide-x", "slide-y"];
 
-const scrollObserver = new IntersectionObserver(
+const selectElements = (parent, animationStyle) =>
+  document.querySelectorAll(
+    `#${parent.attributes.id.nodeValue} [data-animation=${animationStyle}]`
+  );
+
+const addAnimationClass = (element, animation) =>
+  element.classList.add(`${animation}`);
+
+const removeAnimationClass = (element, animation) =>
+  element.classList.remove(`${animation}`);
+
+const slideObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        window.scrollTo({
-          top: entry.target.offsetTop,
-          left: 0,
-          behavior: "smooth",
+        animations.forEach((animation) => {
+          selectElements(entry.target, animation).forEach((element) => {
+            console.log(element);
+            addAnimationClass(element, animation);
+          });
         });
       }
     });
   },
   {
-    threshold: 0.1,
+    threshold: 0.5,
   }
 );
 
-sections.forEach((secion) => {
-  scrollObserver.observe(secion);
+sections.forEach((section) => {
+  slideObserver.observe(section);
 });

@@ -1,5 +1,8 @@
 :root {
-  --p-color: #ffd343;
+  --p-color: #f8d35a;
+}
+html {
+  scroll-behavior: smooth;
 }
 *,
 *::after,
@@ -21,7 +24,7 @@ img {
   width: 100%;
 }
 .container {
-  max-width: calc(100% - 240px);
+  width: calc(100% - 60px);
   margin-left: auto;
   margin-right: auto;
   height: 100%;
@@ -61,7 +64,7 @@ nav ul {
   background-color: #000;
   left: 0;
   width: 0;
-  transition: width 0.2s;
+  transition: width 0.3s;
 }
 .menu-link:hover:after,
 .menu-link--active:after {
@@ -118,12 +121,6 @@ nav ul {
   background-color: var(--p-color);
   color: #000;
 }
-.hero-mockup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 .h-screen {
   height: 100vh;
@@ -139,32 +136,44 @@ nav ul {
   position: relative;
 }
 
-.section-content > div:first-child {
+.section-content > div:first-child:not(.cta-buttons) {
   transform: translateY(-100px);
 }
-.section-content > div:last-child {
+.section-content > div:last-child:not(.cta-buttons) {
   transform: translateY(100px);
 }
-.section-content--reverse > div:first-child {
+.section-content--reverse > div:first-child:not(.cta-buttons) {
   transform: translateY(100px);
 }
-.section-content--reverse > div:last-child {
+.section-content--reverse > div:last-child:not(.cta-buttons) {
   transform: translateY(-100px);
 }
 .section-content h1 {
   margin-bottom: 30px;
-  font-size: 48px;
+  font-size: 30px;
+  position: relative;
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: transform 0.3s ease-in-out;
 }
 .section-content p {
   font-size: 18px;
   line-height: 30px;
   margin-bottom: 30px;
+  position: relative;
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: all 0.3s 0.1s ease-in-out;
 }
 .mockup {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 420px;
+  opacity: 0;
+  margin-top: 100px;
+  transition: 0.3s ease-in-out;
 }
 
 .section-content--divided {
@@ -225,4 +234,25 @@ footer {
 }
 .footer .social-links a {
   color: #fff;
+}
+
+@media (min-width: 1500px) {
+  .container {
+    width: calc(100% - 240px);
+  }
+  .section-content h1 {
+    font-size: 48px;
+  }
+  .mockup {
+    width: 600px;
+  }
+}
+
+.slide-x {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+}
+.slide-y {
+  margin-top: 0 !important;
+  opacity: 1 !important;
 }
