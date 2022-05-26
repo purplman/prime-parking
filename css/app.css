@@ -269,7 +269,6 @@ nav a {
   transform: translateX(-100px);
   opacity: 0;
   transition: transform 0.3s ease-in-out;
-  text-align: center;
 }
 .section-content p {
   font-size: 18px;
