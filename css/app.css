@@ -23,6 +23,11 @@ a {
 img {
   width: 100%;
 }
+.divider {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
 .container {
   width: calc(100% - 60px);
   margin-left: auto;
@@ -46,11 +51,15 @@ nav {
   font-weight: bold;
   height: 100%;
 }
-nav ul {
+nav a {
+  color: #000;
+}
+.menu > ul {
   list-style: none;
   display: flex;
   gap: 30px;
 }
+
 .mobile-menu-link,
 .menu-link {
   text-transform: uppercase;
@@ -58,6 +67,34 @@ nav ul {
   color: #000;
   position: relative;
 }
+.dropdown {
+  transition: 0.2s ease-in-out;
+  left: 0;
+  position: absolute;
+  top: calc(100% + 30px);
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.dropdown a {
+  display: flex;
+  padding: 8px 16px;
+  background-color: #fff;
+  transition: 0.2s ease-in-out;
+  color: #000;
+}
+.dropdown a:hover {
+  background-color: #f4f4f4;
+}
+.has-dropdown {
+  position: relative;
+}
+.has-dropdown:hover .dropdown {
+  top: 100%;
+  opacity: 1;
+  pointer-events: all;
+}
+
 .menu-link::after {
   position: absolute;
   content: "";
